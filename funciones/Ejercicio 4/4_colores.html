@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Colores y Teclado</title>
+    <style>
+        .coloredDiv {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        #key {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            border: 2px solid black;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="azul" class="coloredDiv" style="background-color: blue;"></div>
+    <div id="rojo" class="coloredDiv" style="background-color: red;"></div>
+    <div id="verde" class="coloredDiv" style="background-color: green;"></div>
+    <div id="amarillo" class="coloredDiv" style="background-color: yellow;"></div>
+    
+    <div id="key" class="coloredDiv"></div>
+
+    <script>
+        const azulDiv = document.getElementById("azul");
+        const rojoDiv = document.getElementById("rojo");
+        const verdeDiv = document.getElementById("verde");
+        const amarilloDiv = document.getElementById("amarillo");
+        const keyDiv = document.getElementById("key");
+        let colorGlobal = "";
+
+        function cambiarColorNegro(event) {
+            event.target.style.backgroundColor = "black";
+        }
+
+        azulDiv.addEventListener("click", cambiarColorNegro);
+        rojoDiv.addEventListener("click", cambiarColorNegro);
+        verdeDiv.addEventListener("click", cambiarColorNegro);
+        amarilloDiv.addEventListener("click", cambiarColorNegro);
+
+        document.addEventListener("keydown", function(event) {
+            const teclaPresionada = event.key.toLowerCase();
+            
+            if (teclaPresionada === "a") {
+                colorGlobal = "#FFC0CB";
+            } else if (teclaPresionada === "s") {
+                colorGlobal = "orange";
+            } else if (teclaPresionada === "d") {
+                colorGlobal = "Chocolate";
+            } else if (teclaPresionada === "p") {
+                colorGlobal = "Cadetblue";
+            } else if (teclaPresionada === "w") {
+                colorGlobal = "Chartreuse";
+            } else if (teclaPresionada === "e") {
+                colorGlobal = "red";
+            }
+
+            keyDiv.style.backgroundColor = colorGlobal;
+
+            if (teclaPresionada === "q" || teclaPresionada === "w" || teclaPresionada === "e") {
+                const newColoredDiv = document.createElement("div");
+                newColoredDiv.className = "coloredDiv";
+                newColoredDiv.style.backgroundColor = colorGlobal;
+                document.body.appendChild(newColoredDiv);
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
